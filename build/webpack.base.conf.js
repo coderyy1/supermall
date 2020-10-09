@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -15,6 +16,13 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+    template: 'index.html',
+       favicon: 'favicon.ico',
+     inject: true
+    })
+   ],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -26,6 +34,13 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('src'),
+      'assets': resolve('src/assets'),
+      'components': resolve('src/components'),
+      'store': resolve('src/store'),
+      'views': resolve('src/views'),
+      'common': resolve('src/common'),
+      'network': resolve('src/network'),
+      'router': resolve('src/router')
     }
   },
   module: {
