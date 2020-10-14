@@ -60,15 +60,19 @@ export default {
 
       
       // 监听滚动
-      this.scroll.on('scroll', (position) => {
+      if (this.probeType === 2 || this.probeType === 3) {
+        this.scroll.on('scroll', (position) => {
         this.$emit('scroll', position)
-      });
+       });
+      }
 
       // 监听上拉事件
-      this.scroll.on('pullingUp', () => {
+      if (this.pullUpLoad === true) {
+        this.scroll.on('pullingUp', () => {
         this.$emit('pullingUp');
         // this.scroll.finished();
-      });
+        });
+      }
 
     
   },
@@ -79,10 +83,11 @@ export default {
       this.scroll && this.scroll.scrollTo(x, y, time);
     },
     finishPullUp() {
-      this.scroll.finishPullUp();
+      this.scroll && this.scroll.finishPullUp();
     },
     refresh() {
       this.scroll && this.scroll.refresh();
+      // console.log('refreshing~');
     }
   }
   
