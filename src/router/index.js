@@ -17,22 +17,27 @@ const routes = [
   },
   {
     path: '/home',
+    // name: 'Home',
     component: Home
   },
   {
     path: '/category',
+    // name: 'Category',
     component: Category
   },
   {
     path: '/cart',
+    // name: 'Cart',
     component: Cart
   },
   {
     path: '/profile',
+    // name: 'Profile',
     component: Profile
   },
   {
     path: '/detail/:id',
+    // name: 'Detail',
     component: Detail
   }
 
@@ -40,7 +45,8 @@ const routes = [
 
 const router = new Router({
   routes,
-  mode: 'history'
+  mode: 'history',
+  base: '/dist'
 })
 
 

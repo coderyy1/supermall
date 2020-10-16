@@ -31,6 +31,8 @@ import GoodsList from 'components/content/goods/GoodsList'
 import {debounce, throttle} from 'common/utils'
 import {itemListenerMixin, backTopMixin} from 'common/mixin'
 
+import {mapActions} from 'vuex'
+
 
 import DetailNavBar from './detailnavbar/DetailNavBar'
 import DetailSwiper from './childComps/DetailSwiper'
@@ -83,6 +85,9 @@ export default {
       this.$bus.$off('itemImageLoad', this.itemImgListener)  
     },
     methods: {
+        ...mapActions([
+            'addToCartList'
+        ]),
         /**
          * 网络请求相关
          * 
@@ -159,7 +164,12 @@ export default {
             product.price = this.goods.realPrice
             // console.log(product);
 
-            this.$store.dispatch('addToCartList', product).then(res => console.log(res))
+
+            this.addToCartList(product).then(res => {
+                this.$toast.show(res, 1500)
+                
+            })
+            
         }
     }
 }

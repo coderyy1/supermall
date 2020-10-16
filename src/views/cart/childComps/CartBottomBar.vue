@@ -9,7 +9,7 @@
           <div class="sum-price">合计：</div>
           <div class="sum-price data">￥{{totalPrice}}</div>
       </div>
-      <div class="pay">
+      <div class="pay" @click="payClick">
           <span>去结算({{selectedCount}})</span>
       </div>
   </div>
@@ -52,6 +52,11 @@ export default {
         checkAllClick() {
             let oldFlag = !this.isCheckedAll
             this.cartList.forEach(item => item.checked = oldFlag)
+        },
+        payClick() {
+            if(!this.selectedCount) {
+                this.$toast.show('未选择商品')
+            }
         }
     }
 }
