@@ -5,6 +5,10 @@ import store from './store/index'
 import toast from 'components/common/toast'
 import FastClick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)
 
 
 // main.js是程序入口

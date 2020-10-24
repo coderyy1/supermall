@@ -26,7 +26,7 @@
 
 <script>
 
-import HomeSwiper from './childComps/HomeSwiper'
+import HomeSwiper from './childComps/NewSwiper'
 import RecommendView from './childComps/RecommendView'
 import FeatureView from './childComps/FeatureView'
 
